@@ -38,6 +38,9 @@ public class Purchase {
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
 
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID sharedId;
+
   @Column(name = "amount", nullable = false, precision = 10, scale = 2)
   private BigDecimal amount;
 
@@ -60,7 +63,7 @@ public class Purchase {
   @Column(name = "method", nullable = false)
   private Method method;
 
-  @ManyToOne(cascade = { CascadeType.PERSIST })
+  @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "card_id")
   private Card card;
 

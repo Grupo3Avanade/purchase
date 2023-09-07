@@ -26,28 +26,16 @@ public class PurchaseService {
   @Value("${business.out.create-invoice}")
   private String queueName;
 
-  private final RabbitTemplate rabbitTemplate;
-  private final ObjectMapper objectMapper;
-
   public ResponsePurchaseDto create(CreatePurchaseDto dto) {
     Purchase purchase = PurchaseMapper.INSTANCE.toEntity(dto);
 
     PurchaseStrategy strategy = purchaseFactory.getStrategy(dto.getMethod());
 
     strategy.pay(purchase);
-    generateInvoice(purchase);
-
+ 
     Purchase result = repository.save(purchase);
 
     return PurchaseMapper.INSTANCE.toDto(result);
   }
 
-  private void generateInvoice(Purchase purchase) {
-    try {
-      CreateInvoiceDto dto = PurchaseMapper.INSTANCE.toCreateInvoiceDto(purchase);
-      rabbitTemplate.convertAndSend(queueName, objectMapper.writeValueAsString(dto));
-    } catch (Exception e) {
-      purchase.setStatus(Status.INVOICE_PENDING);
-    } 
-  }
 }

@@ -27,17 +27,17 @@ public class PixPurchaseStrategy implements PurchaseStrategy {
       throw new RuntimeException("Pix purchase must have a pix");
     }
 
-    Status status = isPixApproved(purchase.getPix()) ? Status.APPROVED : Status.REJECTED;
+    Status status = isPixApproved(purchase.getPix());
 
     purchase.setStatus(status);
 
     return PurchaseMapper.INSTANCE.toDto(purchase);
   }
 
-  private boolean isPixApproved(Pix pix) {
+  private Status isPixApproved(Pix pix) {
     System.out.println("Check pix with external service");
 
-    return true;
+    return Status.APPROVED;
   }
 
 }

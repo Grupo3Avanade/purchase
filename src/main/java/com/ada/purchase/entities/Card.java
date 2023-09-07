@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,6 +42,6 @@ public class Card {
   @Column(name = "security_code", nullable = false)
   private String securityCode;
 
-  @OneToMany(mappedBy = "card")
-  private List<Purchase> purchases;
+  @OneToOne(mappedBy = "card")
+  private Purchase purchase;
 }

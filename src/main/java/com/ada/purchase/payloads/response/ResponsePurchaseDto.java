@@ -5,13 +5,17 @@ import java.util.UUID;
 
 import com.ada.purchase.entities.enums.Status;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Builder
-public record ResponsePurchaseDto(
-    UUID cardId,
-    String store,
-    BigDecimal amount,
-    Status status) {
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ResponsePurchaseDto {
+    UUID id;
+    UUID cardId;
+    String store;
+    BigDecimal amount;
+    Status status;
 }

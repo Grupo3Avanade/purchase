@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "business.in.fatura",
+    "type": "java.lang.String",
+    "description": "A description for 'business.in.fatura'"
+  },
+  {
+    "name": "business.out.retorno-fatura",
+    "type": "java.lang.String",
+    "description": "A description for 'business.out.retorno-fatura'"
+  },
+  {
+    "name": "business.out.check-debit-card",
+    "type": "java.lang.String",
+    "description": "A description for 'business.out.check-debit-card'"
+  },
+  {
+    "name": "business.out.check-credit-card",
+    "type": "java.lang.String",
+    "description": "A description for 'business.out.check-credit-card'"
+  },
+  {
+    "name": "business.out.create-invoice",
+    "type": "java.lang.String",
+    "description": "A description for 'business.out.create-invoice'"
+  },
+  {
+    "name": "business.in.create-purchase",
+    "type": "java.lang.String",
+    "description": "A description for 'business.in.create-purchase'"
+  }
+]}

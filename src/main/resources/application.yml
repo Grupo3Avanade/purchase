@@ -1,0 +1,24 @@
+
+server:
+  servlet:
+    context-path: /
+  port: 9080
+  compression:
+    mime-types:
+      - application/json
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: purchase
+
+business:
+  in: 
+    create-purchase: CREATE_PURCHASE
+  out:
+    check-credit-card: CHECK_CREDIT_CARD
+    check-debit-card: CHECK_DEBIT_CARD
+    create-invoice: CREATE_INVOICE

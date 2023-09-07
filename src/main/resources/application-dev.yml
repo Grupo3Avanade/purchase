@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/purchases
+    username: docker
+    password: docker
+    continue-on-error: true
+  jpa:
+    open-in-view: false
+    show-sql: true
+    format-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+    defer-datasource-initialization: true
+  liquibase:
+    enabled: false
+    change-log: classpath:db/changelog/changelog-local.xml

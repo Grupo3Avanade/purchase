@@ -1,4 +1,4 @@
-package com.ada.purchase.configs;
+package com.ada.purchase.utils;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;

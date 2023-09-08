@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.ada.purchase.configs.RestApi;
 import com.ada.purchase.entities.Card;
 import com.ada.purchase.entities.Purchase;
 import com.ada.purchase.entities.enums.Method;
@@ -16,6 +15,7 @@ import com.ada.purchase.mappers.CardMapper;
 import com.ada.purchase.mappers.PurchaseMapper;
 import com.ada.purchase.payloads.rabbitmq.CheckCardDto;
 import com.ada.purchase.payloads.response.ResponsePurchaseDto;
+import com.ada.purchase.utils.RestApi;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,19 +1,15 @@
 package com.ada.purchase.services;
 
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.ada.purchase.entities.Purchase;
-import com.ada.purchase.entities.enums.Status;
 import com.ada.purchase.factories.PurchaseFactory;
 import com.ada.purchase.factories.PurchaseStrategy;
 import com.ada.purchase.mappers.PurchaseMapper;
-import com.ada.purchase.payloads.rabbitmq.CreateInvoiceDto;
 import com.ada.purchase.payloads.request.CreatePurchaseDto;
 import com.ada.purchase.payloads.response.ResponsePurchaseDto;
 import com.ada.purchase.repositories.PurchaseRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.RequiredArgsConstructor;
 
@@ -32,7 +28,7 @@ public class PurchaseService {
     PurchaseStrategy strategy = purchaseFactory.getStrategy(dto.getMethod());
 
     strategy.pay(purchase);
- 
+
     Purchase result = repository.save(purchase);
 
     return PurchaseMapper.INSTANCE.toDto(result);

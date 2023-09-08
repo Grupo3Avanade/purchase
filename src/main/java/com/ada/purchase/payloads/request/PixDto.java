@@ -22,9 +22,6 @@ public class PixDto {
         String description;
 
         @NotNull
-        String amount;
-
-        @NotNull
         PixType type;
 
 }

@@ -35,10 +35,7 @@ public class Pix {
 
   @Column(name = "description", nullable = false)
   private String description;
-
-  @Column(name = "amount", nullable = false)
-  private String amount;
-
+  
   @Column(name = "type", nullable = false)
   private PixType type;
 

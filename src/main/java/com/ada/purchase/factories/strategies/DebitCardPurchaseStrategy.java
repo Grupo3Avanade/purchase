@@ -12,7 +12,6 @@ import com.ada.purchase.entities.enums.Method;
 import com.ada.purchase.entities.enums.Status;
 import com.ada.purchase.factories.PurchaseStrategy;
 import com.ada.purchase.factories.strategies.dto.AutorizeDto;
-import com.ada.purchase.factories.strategies.dto.AutorizeStatus;
 import com.ada.purchase.mappers.CardMapper;
 import com.ada.purchase.mappers.PurchaseMapper;
 import com.ada.purchase.payloads.rabbitmq.CheckCardDto;
@@ -51,17 +50,16 @@ public class DebitCardPurchaseStrategy implements PurchaseStrategy {
 
       CheckCardDto dto = CardMapper.INSTANCE.toCheckCard(card, amount);
 
-      AutorizeStatus status = RestApi.card.post().uri("").bodyValue(dto).retrieve().bodyToMono(AutorizeDto.class)
+      String status = RestApi.card.post().uri("/v3/8fafdd68-a090-496f-8c9a-3442cf30dae6").bodyValue(dto).retrieve()
+          .bodyToMono(AutorizeDto.class)
           .block()
           .status();
 
       switch (status) {
-        case APPROVED:
+        case "Aprovado":
           return Status.APPROVED;
-        case REJECTED:
-          return Status.REJECTED;
         default:
-          throw new RuntimeException("Invalid status");
+          return Status.REJECTED;
       }
     } catch (Exception e) {
       return Status.PENDING;

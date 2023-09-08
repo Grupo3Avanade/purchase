@@ -2,6 +2,8 @@ package com.ada.purchase.entities;
 
 import java.util.UUID;
 
+import com.ada.purchase.entities.enums.PixType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,8 +27,20 @@ public class Pix {
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
 
-  @Column(name = "hash", nullable = false)
-  private String hash;
+  @Column(name = "from", nullable = false)
+  private String from;
+
+  @Column(name = "to", nullable = false)
+  private String to;
+
+  @Column(name = "description", nullable = false)
+  private String description;
+
+  @Column(name = "amount", nullable = false)
+  private String amount;
+
+  @Column(name = "type", nullable = false)
+  private PixType type;
 
   @OneToOne(mappedBy = "pix")
   private Purchase purchase;

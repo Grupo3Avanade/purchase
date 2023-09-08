@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.ada.purchase.entities.enums.Method;
@@ -38,8 +39,8 @@ public class Purchase {
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
 
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private UUID sharedId;
+  @Column(name = "shared_id", nullable = false, updatable = false)
+  private UUID sharedId = UUID.randomUUID();
 
   @Column(name = "amount", nullable = false, precision = 10, scale = 2)
   private BigDecimal amount;

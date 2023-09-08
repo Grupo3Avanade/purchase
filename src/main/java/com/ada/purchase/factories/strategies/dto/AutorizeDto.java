@@ -1,5 +1,5 @@
 package com.ada.purchase.factories.strategies.dto;
 
-public record AutorizeDto(AutorizeStatus status) {
+public record AutorizeDto(String status) {
   
 }

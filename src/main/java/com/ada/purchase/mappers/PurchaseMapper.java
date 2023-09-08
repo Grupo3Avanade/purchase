@@ -28,6 +28,7 @@ public interface PurchaseMapper {
   @Mapping(target = "id", source = "sharedId")
   ResponsePurchaseDto toDto(Purchase entity);
 
+  @Mapping(target = "cardId", source = "card.id")
   CreateInvoiceDto toCreateInvoiceDto(Purchase entity);
 
   @Mapping(target = "id", ignore = true)
